@@ -1,42 +1,67 @@
-module.exports = {
+const config = {
   profile: {
-    ownerName: "", // defult: AiDarkEzio
-    ownerNumb: "", // defult: 94761539856
-    botName: "", // defult: Whats Bot MD
+    ownerName: "Endy",
+    ownerNumb: "212656245701",
+    botName: "Zeyno Bot",
   },
+
+  // Lista staff del bot
+  staff: [
+    "85253382438",
+    "212775270361",
+    "5511967898841",
+    "212693877842",
+    "393926427789"
+  ],
+
   reply: {
-    notFound: "", // defult: "This Command not created. it was creating",
-    success: "", // defult: "Done ✓",
-    admin: "", // defult: "This Feature Is Only For Admin!",
-    botAdmin: "", // defult: "Bot Must Be Admin First!",
-    owner: "", // defult: "This Feature Is Only For Owner!",
-    group: "", // defult: "Feature Used Only For Groups!",
-    private: "", // defult: "Features Used Only For Private Chat!",
-    bot: "", // defult: "This Feature Is Only For Bot",
-    wait: "", // defult: "In process...",
-    linkm: "", // defult: "Where is the link?",
-    error: "", // defult: "Error!!",
-    endLimit: "", // defult: "Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours",
-    ban: "", // defult: "You have been banned by the owner, if you want to be unbanned, chat owner.",
-    nsfw: "", // defult: "The nsfw feature has not been activated, please contact the admin to activate",
-    banChat: "", // defult: "The bot was banned in this group, please contact the owner to unban",
+    notFound: "Comando non trovato.",
+    success: "Fatto ✓",
+    admin: "Questo comando è solo per admin!",
+    botAdmin: "Il bot deve essere admin prima!",
+    owner: "Questo comando è solo per l'owner!",
+    staff: "Questo comando è solo per lo staff!",
+    group: "Questo comando funziona solo nei gruppi!",
+    private: "Questo comando funziona solo in chat privata!",
+    bot: "Questo comando è solo per il bot!",
+    wait: "Attendi...",
+    linkm: "Dov'è il link?",
+    error: "Errore!",
+    endLimit: "Hai finito il limite giornaliero, si resetta ogni 12 ore.",
+    ban: "Sei stato bannato dal bot, contatta l'owner.",
+    nsfw: "La funzione NSFW non è attiva.",
+    banChat: "Il bot è bannato in questo gruppo, contatta l'owner.",
   },
+
   setting: {
-    blockchat: [], // Your block chat Jids
+    blockchat: [],
   },
+
   auto: {
     chat: {
-      group: false, // Chat Bot In Group | u can set true or false
-      inbox: false, // chat bot in inbox | u can set true or false
+      group: true,
+      inbox: true,
     },
     reply: {
-      sticker: false, // Boolean | ===== It not created now ======
-      audio: false, // Boolean | ===== It not created now ======
+      sticker: false,
+      audio: false,
     },
     presence: {
-      is: false, // U Can on or off this () | u can set true or false
-      value: "typing", // It has two types | u can set 'recoding' or 'typing'
+      is: true,
+      value: "typing",
     },
-    read: false, // Boolean | ===== It not created now ======
+    read: false,
   },
+
+  // Funzioni per controllo permessi
+  check: {
+    isOwner: function(sender) {
+      return sender === config.profile.ownerNumb;
+    },
+    isStaff: function(sender) {
+      return config.staff.includes(sender) || sender === config.profile.ownerNumb;
+    }
+  }
 };
+
+module.exports = config; 
